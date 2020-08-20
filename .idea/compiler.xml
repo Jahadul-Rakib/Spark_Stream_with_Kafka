@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Spark_Play_Ground_3" />
         <module name="Test_One" />
         <module name="Spark_Play_Ground" />
         <module name="Spark_Play_Ground_2" />
