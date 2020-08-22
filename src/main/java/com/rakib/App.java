@@ -1,6 +1,7 @@
 package com.rakib;
 
 import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.streaming.OutputMode;
@@ -32,9 +33,6 @@ public class App {
         rowDataset.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)");
 
 
-        //rowDataset.createOrReplaceTempView("student_info");
-        //Dataset<Row> dataset = sparkSession.sql("SELECT value FROM student_info");
-
 
         StreamingQuery query = rowDataset
                 .writeStream()
@@ -42,7 +40,5 @@ public class App {
                 .outputMode(OutputMode.Append())
                 .start();
         query.awaitTermination();
-
-
     }
 }
