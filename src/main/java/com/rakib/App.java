@@ -30,11 +30,10 @@ public class App {
                 .option("subscribe", "studentinfo")
                 .option("startingOffsets", "earliest")
                 .load();
-        rowDataset.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)");
+        Dataset<Row> dataset = rowDataset.selectExpr("CAST(key AS STRING)", "CAST(value AS STRING)");
 
 
-
-        StreamingQuery query = rowDataset
+        StreamingQuery query = dataset
                 .writeStream()
                 .format("console")
                 .outputMode(OutputMode.Append())
